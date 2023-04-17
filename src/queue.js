@@ -25,16 +25,18 @@ class Queue {
   enqueue(value) {
     if (this.queue === null) {
       this.queue = new ListNode(value);
-    } else if (!this.queue.next) {
+      return;
+    }
+    if (!this.queue.next) {
       this.queue.next = new ListNode(value);
-    } else {
-      let queue = this.queue;
-      while (queue.next !== null) {
-        queue = queue.next;
-        if (queue.next === null) {
-          queue.next = new ListNode(value);
-          return;
-        }
+      return;
+    }
+    let queue = this.queue;
+    while (queue.next !== null) {
+      queue = queue.next;
+      if (queue.next === null) {
+        queue.next = new ListNode(value);
+        return;
       }
     }
   }
